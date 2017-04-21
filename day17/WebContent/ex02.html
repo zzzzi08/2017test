@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0"/>
+        <script type="text/javascript" lang="javascript">
+        var id, pw, form;
+        window.onload=function(){
+            form=document.querySelector("#header>form");
+            id=form.querySelectorAll("input")[0];
+            pw=form.querySelectorAll("input")[1];
+            form.onsubmit=function(e){
+                e.preventDefault();
+                var url='login.xml';
+                var xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+           			 if(xhr.status==200&&xhr.readyState==4){
+		                var msg=xhr.responseXML;
+		                var login=msg.getElementsByTagName('login')[0];
+		                var result=login.children[1].childNodes[0].nodeValue;
+		                var user=login.children[0].childNodes[0].nodeValue;
+		                if(result==1){
+		                    form.outerHTML='<h2>'+user+'님 환영합니다</h2>';
+		                }else{
+		                    alert("아이디/패스워드를 다시 확인하시고 입력하세요");
+		                }
+		            }
+                };
+                xhr.open('get',url,true);
+                xhr.send();
+            };
+        };
+                </script>
+        	</head>
+
+        	<body>
+                <div id="header">
+                    <h1>한빛교육센터</h1>
+                    <form>
+                        <label>id</label><input type="text"/>
+                        <label>pw</label><input type="text"/>
+                        <button type="submit">로그인</button>
+                    </form>
+                </div>
+                <div id="menu">
+                    <a href="#">menu1</a>
+                    <a href="#">menu2</a>
+                    <a href="#">menu3</a>
+                    <a href="#">menu4</a>
+                </div>
+                <div id="content">
+                   <div id="banner">
+                    <img src="imgs/big01.jpg" alt="img1">
+                    <a href="#">prev</a>
+                    <a href="#">next</a>
+                    </div>
+                </div>
+                <div id="footer">
+        <p>한빛교육센터 한빛 한빛</p>
+    </div>
+    
+</body>
+</html>

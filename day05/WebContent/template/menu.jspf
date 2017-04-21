@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+		<!-- menu -->		
+		<tr>
+			<td>
+				<table width = "60%" align="center">
+					<tr  bgcolor="#22B600">
+						<td width="25%">
+							<a href="<%=contextPath%>/">HOME</a>
+						</td>
+						<td width="25%">
+							<a href="<%=contextPath%>/guest01/list.jsp">GUEST01</a>
+						</td>
+						<td width="25%">
+							<a href="<%=contextPath%>/guest02/list.jsp">GUEST02</a>
+						</td>
+						<td width="25%">
+							<a href="<%=contextPath%>/login/form.jsp">LOGIN</a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
+		
+		
+		<!-- content -->
+		<tr>
+			<td>

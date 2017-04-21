@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+	</td>
+		</tr>
+
+		<!-- footer -->
+		<tr>
+				<td bgcolor="#EAEAEA">
+			<p>(주)한빛이엔아이</p>
+			<p>한빛ENI : 서울시 마포구 신수동 63-14 구프라자 3층 </p>
+			<p>Copyright (c) 2015 한빛교육센터 All rights reserved.</p>
+			</td>
+		</tr>
+	</table>

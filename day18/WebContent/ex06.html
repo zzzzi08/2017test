@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css"></style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		// jq 비동기 통신 .ajax();
+		$('button').click(function() {
+			var url='data03.json';
+			var obj={
+					'type':'get',
+					'async':true,//비동기 ,  false 동기
+					'error':function(xhr,status,error){
+						console.log(status+":"+error);						
+					},
+					'success':function(data,status, xhr){
+	var ul=$('<ul></ul>');			
+	ul.addClass('bxslider');
+	for(var i=0; i<data.imgs.length; i++){
+		var li=$('<li></li>');
+		var img=$('<img src="" />');
+		img.attr('src','img/'+data.imgs[i].src);
+		li.append(img);
+		ul.append(li);
+	}
+	$('div').append(ul);
+					}
+			};
+			$.ajax(url,obj);
+		});
+		
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h1>이미지들</h1>
+	<button>파싱</button>
+	<div>
+		
+	</div>
+</body>
+</html>

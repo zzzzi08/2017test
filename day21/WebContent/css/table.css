@@ -1,0 +1,30 @@
+#content #table{
+			width: 88%;
+			border: 1px solid gray;
+			margin: 5px auto;
+		}
+		#content #table a{
+			text-decoration: none;
+		}
+		#content #table .row{
+			border-bottom: 1px solid gray;
+		}
+		#content #table>a>.row:hover{
+			background-color: yellow;
+		}
+		#content #table .row>span{
+			display: inline-block;
+			width: 20%;
+		}
+		#content #table .row>span:nth-child(1){
+			width: 100px;
+		}
+		#content #table .row>span:nth-child(2){
+			width: 200px;
+		}
+		#content #table .row>span:nth-child(4){
+			width: 200px;
+		}
+		#content #table .row>span:nth-child(5){
+			width: 100px;
+		}

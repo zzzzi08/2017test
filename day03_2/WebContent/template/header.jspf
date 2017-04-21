@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR" import="java.sql.*"%>
+<% String rootPath=request.getContextPath();
+	String driver="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String user="scott";
+	String password="tiger";
+	
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs = null;
+	PreparedStatement pstmt=null;
+%> 
+	<table width="100%">
+		<!-- header -->
+		<tr>
+			<td colspan="2">
+				<a href="<%=rootPath %>">
+				<img alt="logo" src="imgs/naver.jpg">
+				</a>
+			</td>
+		</tr>
+		<!-- header end -->

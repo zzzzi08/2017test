@@ -1,0 +1,109 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR" import="java.sql.*, java.util.*, java.text.SimpleDateFormat"%>
+    
+<%! 
+	String driver="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String user="scott";
+	String password="tiger";
+	Connection conn=null;
+	PreparedStatement pstmt=null;
+	ResultSet rs = null;
+
+	public ArrayList selectAll(String sql){
+		ArrayList list = new ArrayList();
+		try{
+			Class.forName(driver);
+			conn=DriverManager.getConnection(url, user, password);
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				HashMap map = new HashMap();
+				map.put("idx", rs.getInt("idx"));
+				map.put("sub", rs.getString("sub"));
+				map.put("wid", rs.getString("wid"));
+				map.put("cnt", rs.getInt("cnt"));
+				list.add(map);
+			}
+			
+		}catch(Exception e){
+			System.out.println("selectAll() error");
+		}finally{
+			try{
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e){
+			}
+		}
+		return list;
+	}
+	
+	public int insertOne(String sql, String sub, String wid, String content){
+		java.util.Date date = new java.util.Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		int result=0;
+		try{
+			Class.forName(driver);
+			conn=DriverManager.getConnection(url, user, password);
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, sub);
+			pstmt.setString(2, wid);
+			pstmt.setString(3, content);
+			pstmt.setString(4, sdf.format(date));
+			
+			result=pstmt.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();			
+		}finally{
+			try{
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception ex){}
+		}
+		return 0;
+	}
+	
+	public HashMap selectOne(String sql,int idx){
+		HashMap map = new HashMap();
+		try{
+			Class.forName(driver);
+			conn=DriverManager.getConnection(url, user, password);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				map.put("idx", rs.getInt("idx"));
+				map.put("wid", rs.getString("wid"));
+				map.put("sub", rs.getString("sub"));
+				map.put("nalja", rs.getString("nalja"));
+				map.put("cnt", rs.getInt("cnt"));
+				map.put("content", rs.getString("content"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception ex){}
+		}
+		return map;
+	}
+	
+%>
+<% 
+	String rootPath =request.getContextPath(); 
+%>
+	<table width="120%">
+		<tr>
+			<td>
+				<a href="<%=rootPath%>/">
+					<img alt="logo" src="<%=rootPath%>/imgs/naver.jpg">
+				</a>
+			</td>
+		</tr>

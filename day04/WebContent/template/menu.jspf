@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<tr bgcolor="#99E000">
+			<td>
+				<table border="1" cellspacing="0" align="center" bordercolor="#ffffff">
+						<tr>
+							<td>
+								<a href="<%=rootPath%>">
+									HOME
+								</a>
+							</td>
+							<td>
+								<a href="bbs/list.jsp">
+									°Ô½ÃÆÇ
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									menu3
+								</a>
+							</td>
+							<td>
+								<a href="#">
+									menu4
+								</a>
+							</td>
+						</tr>
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css"></style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		// jq 비동기 통신 .ajax();
+		$('button').click(function() {
+			var url='data011.xml';
+			var obj={
+					'type':'get',
+					'async':true,//비동기 ,  false 동기
+					'error':function(xhr,status,error){
+						console.log(status+":"+error);						
+					},
+					'success':function(data,status, xhr){
+						var id=$(data).find('id').text();
+						var pw=$(data).find('password').text();
+						var name=$(data).find('name').text();
+						var arr=[id,pw,name];
+						$('span').each(function(idx,ele) {
+							$(this).text(arr[idx]);
+						});
+					}
+			};
+			$.ajax(url,obj);
+		});
+		
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h1>유저 정보</h1>
+	<button>xml파싱</button>
+	<p>id:<span></span></p>
+	<p>pw:<span></span></p>
+	<p>name:<span></span></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			var id=$('input[type="text"]').val();
+			var pw=$('input[type="password"]').val();
+			/* $.get('mydata01.xml',{'id':id,'pw':pw},function(data){
+				//$('div').html(data);
+				var data_id=$(data).find('id').text();
+				$('span').eq(0).text(data_id);
+				var data_pw=$(data).find('password').text();
+				$('span').eq(1).text(data_pw);
+				var data_name=$(data).find('name').text();
+				$('span').eq(2).text(data_name);
+			},'xml'); */
+			
+			$.get('data02.json',null,function(data){
+				//$('div').html(data);
+				var data_id=data.data[0].id;
+				var data_pw=data.data[0].password;
+				var data_name=data.data[0].name;
+				$('span').eq(0).text(data_id);
+				$('span').eq(1).text(data_pw);
+				$('span').eq(2).text(data_name);
+			},'json');
+		});
+	});
+
+</script>
+</head>
+<body>
+	<h1>get방식 파싱</h1>
+	<p>id:<input type="text"></p>
+	<p>pw:<input type="password"></p>
+	<button>파싱</button>
+	<div>
+		<h2>id:<span></span></h2>
+		<h2>pw:<span></span></h2>
+		<h2>name:<span></span></h2>
+	</div>
+</body>
+</html>

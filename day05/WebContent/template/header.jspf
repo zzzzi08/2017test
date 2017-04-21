@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	String contextPath=request.getContextPath();
+%>
+
+	<table width=100% cellspacing ="10">
+		<!-- header -->
+		<tr>
+			<td>
+			<a>
+				<img alt="logo" src="<%=contextPath %>/imgs/naver.jpg">
+			</a>
+			</td>
+		</tr>

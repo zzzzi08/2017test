@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0"/>
+        <script type="text/javascript" lang="javascript">
+        var id, pw, form, xhr;
+        var url='login.json';
+        var loginResult=function(){
+            if(xhr.status==200 && xhr.readyState==4){
+                var msg=xhr.responseText;
+                var obj=JSON.parse(msg);
+                if(obj.login[0].result==1){
+                    form.outerHTML=obj.login[0].id+"님 로그인 중...";
+                }else{
+                    alert('로그인 실패');
+                }
+            }
+        };
+        var login=function(event){
+            event.preventDefault();
+            xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=loginResult;
+            xhr.open('get',url,true);
+            xhr.send();
+        };
+        window.onload=function(){
+            form=document.querySelector("#header>form");
+            id=form.querySelectorAll("input")[0];
+            pw=form.querySelectorAll("input")[1];
+            form.addEventListener('submit',login);
+        }
+            </script>
+        	</head>
+
+        	<body>
+                <div id="header">
+                    <h1>한빛교육센터</h1>
+                    <form>
+                        <label>id</label><input type="text"/>
+                        <label>pw</label><input type="text"/>
+                        <button type="submit">로그인</button>
+                    </form>
+                </div>
+                <div id="menu">
+                    <a href="#">menu1</a>
+                    <a href="#">menu2</a>
+                    <a href="#">menu3</a>
+                    <a href="#">menu4</a>
+                </div>
+                <div id="content">
+                   <div id="banner">
+                    <img src="imgs/big01.jpg" alt="img1">
+                    <a href="#">prev</a>
+                    <a href="#">next</a>
+                    </div>
+                </div>
+                <div id="footer">
+        <p>한빛교육센터 한빛 한빛</p>
+    </div>
+    
+</body>
+</html>

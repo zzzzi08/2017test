@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	window.onload=function(){
+		var h1= document.querySelector('h1');
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			
+			var msg= xhr.responseText;
+			/*
+			xhr.readyState==0 접속전
+			xhr.readyState==1 서버에 접속 단계
+			xhr.readyState==2 request 던질때 단계
+			xhr.readyState==3 실행단계
+			xhr.readyState==4 완료 후 response로 메세지를 뿌려주는 단계
+			*/
+			if(xhr.readyState==4&&xhr.status==200){
+				var msg=xhr.responseText;
+			}
+			//console.log('msg:'+msg+'\n'+xhr.readyState);
+			h1.innerText=msg;
+		};
+		
+		xhr.open('get', 'msg.txt', true);
+		xhr.send();
+	};
+
+</script>
+
+</head>
+<body>
+	<h1></h1>
+</body>
+</html>

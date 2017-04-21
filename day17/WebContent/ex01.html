@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0"/>
+      <style>
+           * {
+                margin: 0px;
+                padding: px;
+            }
+            #menu{
+                background-color: red;
+            }
+            #footer{
+                background-color: gray;
+            }
+            #content,#footer{
+                clear: both;
+            }
+            #banner{
+                margin: 0px auto;
+                position: relative;
+                width: 320px;
+                height: 320px;
+                overflow: hidden;
+            }
+            #banner>ul{
+                width: 10000px;
+                margin: 0px;
+                padding: 0px;
+            }
+            #banner>ul>li{
+                float: left;
+                list-style: none;
+            }
+            #banner>a{
+                width: 55px;
+                height: 55px;
+                position: absolute;
+                top: 150px;
+                left: 0px;
+                display: inline-block;
+                background-image: url(imgs/left.png);
+                text-indent: -99999px;
+            }
+            #banner>a:last-child{
+                left: 265px;
+                background-image: url(imgs/right.png);
+            }
+        </style>
+        <script type="text/javascript" lang="javascript">
+        var banner, ul, atags,tmp;
+        var x=0;
+        window.onload=function(){
+            banner=document.querySelector('#banner');
+            ul=document.querySelector('#banner>ul');
+            atags=document.querySelectorAll('#banner>a');
+            ul.style.marginLeft='0px';
+            atags[0].onclick=function(e){
+                e.preventDefault();
+                if(x<0)x+=320;
+                ul.style.marginLeft=x+"px";
+            };
+            atags[1].onclick=function(){
+                if(x>-320*(8-1))x-=320;
+                var now=parseInt(ul.style.marginLeft);
+                tmp=now;
+                window.setTimeout(myNxtAni,500);
+                return false;
+            };
+        };
+            function myNxtAni(){
+                tmp-=20;
+                //alert("now:"+tmp+",x:"+x);
+                if(tmp==x){
+                   ul.style.marginLeft=tmp+"px";
+                }else{
+                   ul.style.marginLeft=tmp+"px";
+                   window.setTimeout(myNxtAni,500);
+                }
+            }
+        </script>
+	</head>
+
+	<body>
+        <div id="header">
+            <h1>한빛교육센터</h1>
+        </div>
+        <div id="menu">
+            <a href="#">menu1</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+        </div>
+        <div id="content">
+           <div id="banner">
+            <ul>
+                <li><img src="imgs/big01.jpg" alt="img1"></li>
+                <li><img src="imgs/big02.jpg" alt="img2"></li>
+                <li><img src="imgs/big03.jpg" alt="img3"></li>
+                <li><img src="imgs/big04.jpg" alt="img4"></li>
+                <li><img src="imgs/big05.jpg" alt="img5"></li>
+                <li><img src="imgs/big06.jpg" alt="img6"></li>
+                <li><img src="imgs/big07.jpg" alt="img7"></li>
+                <li><img src="imgs/big08.jpg" alt="img8"></li>
+            </ul>
+            <a href="#">prev</a>
+            <a href="#">next</a>
+            </div>
+        </div>
+        <div id="footer">
+        <p>한빛교육센터 한빛 한빛</p>
+    </div>
+    
+</body>
+</html>

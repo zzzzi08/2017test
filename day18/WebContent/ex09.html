@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			$.ajax({
+				'url':'http://run.plnkr.co/plunks/v8xyYN64V4nqCshgjKms/data-1.json',
+				'method':'GET',
+				'dataType':'json',
+				'jsonpCallback':mySuccess,
+				'success':function(data){
+					alert(data);
+				}
+			});
+		});
+		
+		function mySuccess(data){
+			alert("success");
+		}
+	});
+</script>
+</head>
+<body>
+	<h1>크로스도메인해결</h1>
+	<button>파싱</button>
+	<div></div>
+</body>
+</html>

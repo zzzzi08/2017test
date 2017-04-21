@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#header, #footer{
+		background-color: aqua;
+	}
+
+</style>
+<script type="text/javascript">
+	var content, form, id, pw;
+	window.onload=function(){
+		content=document.querySelector('#content');
+		form=document.querySelector("#content>form");
+		id=document.querySelectorAll('#content>form>p>input')[0];
+		pw=document.querySelectorAll('#content>form>p>input')[1];
+		form.addEventListener("submit", loadFunc);
+		
+	};
+	
+	function loadFunc(event){
+		event.preventDefault();
+		login();
+	}
+	function login(){
+		var url='http://localhost:8080/day15/login.jsp?id='id.value+"&pw="+pw.value;
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				console.log(xhr.responseText);
+				content.innerHTML=xhr.responseText;
+			}
+		};
+		xhr.open('get', url, false);
+		xhr.send();
+	}
+
+</script>
+
+</head>
+
+<body>
+	<div id="header">
+		<h1>한빛교육센터</h1>
+	</div>
+	<div id="content">
+		<form action="login.jsp">
+			<p>
+				<label>id</label><input type="text" name="id"/>
+			</p>
+			<p>
+				<label>pw</label><input type="text" name="pw"/>
+			</p>
+			<p>
+				<input type="submit" value="로그인"/>
+				<input type="reset" value="취소"/>
+			</p>
+		</form>
+	</div>
+	<div id="footer">
+		<p>hanbit hanbit</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+		<tr height="300">
+			<!-- menu -->
+			<td width="30%" bgcolor="#E0FF80" valign="top">
+				<ul>
+					<li><a href="page1.jsp">소개</a></li>
+					<li><a href="list.jsp">게시판</a></li>
+					<li><a href="#">방명록</a></li>
+				</ul>
+			</td>
+			<!-- menu end -->
+			
+			
+			
+			<!-- content -->
+			<td width="70"  valign="top">

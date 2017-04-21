@@ -1,0 +1,52 @@
+	body,body>*{
+		margin:0px;
+		padding:0px;
+	}
+	header,nav,section,footer{
+		width:700px;
+		margin:0px auto;
+		
+		border: solid red 1px;
+	}
+	nav{
+	background-color: red;
+		clear: both;
+	}
+	nav>ul{
+		overflow: hidden;
+		width:400px;
+		margin: 0px auto;
+	}
+	nav>ul>li{
+		float:left;
+		list-style: none;
+		width:95px;
+		border-right: white solid 5px;
+	}
+	nav>ul>li>nth-CHILD(1){
+		width:90px;
+		border-left: white sold 5px;
+	}
+	
+	nav>ul>li>a{
+	text-align: center;
+		width:95px;
+		display: inline-block;
+		color:white;
+		text-decoration: none;
+		font-variant: small-caps;	
+	}
+	nav>ul>li>a:FIRST-CHILD{
+		width: 90px;
+	}
+	
+	
+	
+	footer{
+	background-color: gray;
+	}
+	
+	footer>*{
+		text-align: center;
+	}
+	

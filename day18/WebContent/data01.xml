@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<user>
+		<id>admin</id>
+		<password>1234</password>
+		<name>관리자</name>
+	</user>
+</data>

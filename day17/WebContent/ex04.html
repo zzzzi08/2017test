@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	*{
+		margin: 0px;
+        padding: px;
+      }
+    #menu{
+        background-color: red;
+    }
+	#footer{
+		background-color: gray;
+	}
+	#content>#board{
+		width:408px;
+		height: 500px;
+		margin: 0px auto;
+		border: 3px solid gray;
+	}
+</style>
+<script type="text/javascript">
+	var board, xhr;
+	window.onload=function(){
+		board = document.querySelector('#board');
+		start();
+	};
+	function start(){
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = imgLoading;
+		xhr.open('get',url,true);
+		xhr.send();
+	}
+	function imgLoading(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var msg='<ul>';
+			var txt = xhr.responseText;
+			var obj=JSON.parse(txt);
+			for(var i=0; i<obj.data.length; i++){
+				msg+='<li>';
+				msg+='<img src="imgs/small/';
+				msg+=obj.data[i].src;
+				msg+='"/>';
+				msg+='</li>';
+			}
+			msg+='</ul>';
+			board.innerHRML=msg;
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div id="header">
+		<h1>한빛교육센터</h1>
+	</div>
+	 <div id="menu">
+            <a href="#">menu1</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+        </div>
+        <div id="content">
+        	<h1>이미지 게시판</h1>
+        	
+        </div>
+        <div id="footer">
+        <p>한빛교육센터 한빛 한빛</p>
+    </div>
+</body>
+</html>
